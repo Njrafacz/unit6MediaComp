@@ -78,6 +78,41 @@ public class PictureTester
     snowman.mirrorArms();
     snowman.explore();
     }
+  public static void testKeepOnlyBlue()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.keepOnlyBlue();
+      beach.explore();
+    }
+  public static void testNegate()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.negate();
+      beach.explore();
+    }
+  public static void testGrayscale()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.grayscale();
+      beach.explore();
+    }
+  public static void testPurple()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.purple();
+      beach.explore();
+    }
+  public static void testYellow()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.yellow();
+      beach.explore();
+    }  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
