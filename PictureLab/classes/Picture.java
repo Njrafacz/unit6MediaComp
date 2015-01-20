@@ -251,16 +251,17 @@ public class Picture extends SimplePicture
     /** Method to create a collage of several pictures */
     public void createCollage()
     {
-        Picture flower1 = new Picture("flower1.jpg");
-        Picture flower2 = new Picture("flower2.jpg");
-        this.copy(flower1,0,0);
-        this.copy(flower2,100,0);
-        this.copy(flower1,200,0);
-        Picture flowerNoBlue = new Picture(flower2);
-        flowerNoBlue.zeroBlue();
-        this.copy(flowerNoBlue,300,0);
-        this.copy(flower1,400,0);
-        this.copy(flower2,500,0);
+        Picture mJ = new Picture("mJ.jpg");
+        this.copy(mJ,0,0);
+        Picture mJPurple = new Picture("mJ.jpg");
+        mJPurple.purple();
+        this.copy(mJPurple,100,0);
+        Picture mJgray = new Picture("mJ.jpg");
+        mJgray.grayscale();
+        this.copy(mJgray,400,0);
+        Picture mJhorizontal = new Picture("mJ.jpg");
+        mJhorizontal.mirrorHorizontal();
+        this.copy(mJhorizontal,500,0);
         this.mirrorVertical();
         this.write("collage.jpg");
     }
@@ -372,11 +373,12 @@ public class Picture extends SimplePicture
      */
     public static void main(String[] args) 
     {
-        Picture beach = new Picture("beach.jpg");
-
-        beach.explore();
-        beach.zeroBlue();
-        beach.explore();
+        Picture mJ = new Picture("mJ.jpg");
+// 
+//         mJ.explore();
+//         mJ.grayscale();
+//         mJ.explore();
+    mJ.createCollage();
     }
 
 } // this } is the end of class Picture, put all new methods before this
