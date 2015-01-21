@@ -249,21 +249,47 @@ public class Picture extends SimplePicture
     }
 
     /** Method to create a collage of several pictures */
-    public void createCollage()
+    public void createCollage(Picture pic)
     {
         Picture mJ = new Picture("mJ.jpg");
-        this.copy(mJ,0,0);
+        pic.copy(mJ,0,0);
         Picture mJPurple = new Picture("mJ.jpg");
         mJPurple.purple();
-        this.copy(mJPurple,100,0);
+        pic.copy(mJPurple,0,200);
         Picture mJgray = new Picture("mJ.jpg");
         mJgray.grayscale();
-        this.copy(mJgray,400,0);
+        pic.copy(mJgray,0,400);
         Picture mJhorizontal = new Picture("mJ.jpg");
         mJhorizontal.mirrorHorizontal();
-        this.copy(mJhorizontal,500,0);
-        this.mirrorVertical();
-        this.write("collage.jpg");
+        pic.copy(mJhorizontal,0,600);
+        Picture mJyellow = new Picture("mJ.jpg");
+        mJyellow.yellow();
+        pic.copy(mJyellow,250,0);
+        Picture mJNoBlue = new Picture("mJ.jpg");
+        mJNoBlue.zeroBlue();
+        pic.copy(mJNoBlue,250,200);
+        Picture mJhorizontalBT = new Picture("mJ.jpg");
+        mJhorizontalBT.mirrorHorizontalBotToTop();
+        pic.copy(mJhorizontalBT,250 ,400);
+        Picture mJvertical = new Picture("mJ.jpg");
+        mJvertical.mirrorVertical();
+        pic.copy(mJvertical,250,600);
+        Picture mJvertical1 = new Picture("mJ.jpg");
+        mJvertical1.mirrorVerticalRightToLeft();
+        pic.copy(mJvertical1,500,0);
+        Picture mJtransform1 = new Picture("mJ.jpg");
+        mJtransform1.mirrorVertical();
+        mJtransform1.purple();
+        pic.copy(mJtransform1,500,200);
+        Picture mJSepia = new Picture("mJ.jpg");
+        mJSepia.grayscale();
+        mJSepia.sepia();
+        pic.copy(mJSepia,500,400);
+        Picture mJtransform2 = new Picture("mJ.jpg");
+        mJtransform2.mirrorHorizontal();
+        mJtransform2.yellow();
+        pic.copy(mJtransform2,500,600);
+        pic.write("collage.jpg");
     }
 
     /** Method to show large changes in color 
@@ -367,18 +393,43 @@ public class Picture extends SimplePicture
     {
 
     }
-
+    public void sepia()
+    {
+        
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                if(pixelObj.getRed()<60)
+                {
+                    pixelObj.setBlue(pixelObj.getBlue() *9/10);
+                    pixelObj.setGreen(pixelObj.getGreen() *9/10);
+                    pixelObj.setRed(pixelObj.getRed() *9/10);
+                }
+                if(pixelObj.getRed()>190)
+                    {
+                        pixelObj.setBlue(pixelObj.getBlue() *8/10);
+                    }
+                else{
+                        pixelObj.setBlue(pixelObj.getBlue() *9/10);
+                    }
+                
+            }
+        }
+    }
     /* Main method for testing - each class in Java can have a main 
      * method 
      */
     public static void main(String[] args) 
     {
-        Picture mJ = new Picture("mJ.jpg");
+      Picture canvas = new Picture(750,800);
 // 
 //         mJ.explore();
 //         mJ.grayscale();
 //         mJ.explore();
-    mJ.createCollage();
+     canvas.createCollage(canvas);
+     canvas.explore();
     }
 
 } // this } is the end of class Picture, put all new methods before this
